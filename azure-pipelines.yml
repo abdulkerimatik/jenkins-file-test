@@ -9,7 +9,7 @@ pool:
 stages:
 - stage: build
   jobs:
-  - job: Build_main
+  - job: Buildmain
     displayName: Build PreRelease
     steps:
       - task: Maven@3
@@ -22,9 +22,9 @@ stages:
           publishJUnitResults: true
           testResultsFiles: '**/surefire-reports/TEST-*.xml'
           goals: 'package'
-- stage: deploy-master
+- stage: deploymaster
   jobs:
-  - job: deploy-master
+  - job: deploymaster
     displayName: Deploy Master
     steps:
       - task: Bash@3
