@@ -9,10 +9,10 @@ pool:
   vmImage: ubuntu-latest
 
 parameters:
-- name: deploymaster
+- name: Build.Reason
   displayName: Deploy to MASTER
-  type: boolean
-  default: false
+  type: string
+  default: MASTER
 
 stages:
 - stage: build
