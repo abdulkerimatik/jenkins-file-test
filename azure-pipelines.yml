@@ -26,7 +26,7 @@ stages:
   jobs:
   - job: deploymaster
     displayName: Deploy Master
-    condition: and(succeeded(), and(manual_approval()))
+    condition: manual_approval()
     steps:
       - task: Bash@3
         inputs:
