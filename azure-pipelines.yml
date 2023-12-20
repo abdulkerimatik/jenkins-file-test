@@ -6,6 +6,12 @@
 pool:
   vmImage: ubuntu-latest
 
+parameters:
+- name: deploymaster
+  displayName: Deploy to MASTER
+  type: boolean
+  default: false
+
 stages:
 - stage: build
   jobs:
@@ -26,7 +32,7 @@ stages:
   jobs:
   - job: deploymaster
     displayName: Deploy Master
-    condition: eq(variables['Build.Reason'], 'Manual')
+    condition: and(succeeded('build'), eq(${{ parameters.deploymaster }}, true))
     steps:
       - task: Bash@3
         inputs:
