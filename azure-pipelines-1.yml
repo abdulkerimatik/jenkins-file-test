@@ -8,33 +8,11 @@ trigger: none
 pool:
   vmImage: ubuntu-latest
 
-parameters:
-- name: Build.Reason
-  displayName: Deploy to MASTER
-  type: string
-  default: MASTER
-
 stages:
-- stage: build
-  jobs:
-  - job: Buildmain
-    displayName: Build PreRelease
-    steps:
-      - task: Maven@3
-        inputs:
-          mavenPomFile: 'pom.xml'
-          mavenOptions: '-Xmx3072m'
-          javaHomeOption: 'JDKVersion'
-          jdkVersionOption: '1.11'
-          jdkArchitectureOption: 'x64'
-          publishJUnitResults: true
-          testResultsFiles: '**/surefire-reports/TEST-*.xml'
-          goals: 'package'
 - stage: deploymaster
   jobs:
   - job: deploymaster
     displayName: Deploy Master
-    condition: eq(variables['Build.Reason'], 'Manual')
     steps:
       - task: Bash@3
         inputs:
