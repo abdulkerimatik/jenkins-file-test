@@ -7,7 +7,6 @@ pipeline {
                 echo 'Build!'
             }
         }
-
         stage('Test') {
             steps {
                 // Run your tests here (e.g., unit tests, integration tests)
@@ -15,14 +14,12 @@ pipeline {
 
             }
         }
-
         stage('Push') {
             steps {
                 // Push the Docker image to a container registry (e.g., Docker Hub)
                  echo 'Pushed!'
             }
         }
-
         stage('Deploy') {
             steps {
                 // Deploy your application (e.g., to a Kubernetes cluster)
